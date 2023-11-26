@@ -73,26 +73,80 @@ ul {
   height: 100%;
 }
 
-.squares li[data-level='1'], .graph-level li:nth-child(2) {
+.squares li[data-level='No contributions'], .graph-level li:nth-child(2) {
   background: #EDEDED;
 }
 
-.squares li[data-level='2'], .graph-level li:nth-child(3) {
+.squares li[data-level='1-9 contributions'], .graph-level li:nth-child(3) {
   background: #ACD5F2;
 }
 
-.squares li[data-level='3'], .graph-level li:nth-child(4) {
+.squares li[data-level='10-19 contributions'], .graph-level li:nth-child(4) {
   background: #7FA8C9;
 }
 
-.squares li[data-level='4'], .graph-level li:nth-child(5) {
+.squares li[data-level='20-29 contributions'], .graph-level li:nth-child(5) {
   background: #527BA0;
 }
 
-.squares li[data-level='5'], .graph-level li:nth-child(6) {
+.squares li[data-level='30+ contributions'], .graph-level li:nth-child(6) {
   background: #254E77;
 }
 
 .graph-level li:nth-child(1), .graph-level li:nth-child(7) {
   padding: 0 5px;
+}
+
+.squares li {
+  position: relative;
+}
+
+.squares li:hover, .squares li:active {
+  border: 1px solid black;
+}
+
+.squares li::after {
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  height: min-content;
+  background: black;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: 1s;
+  z-index: 100;
+}
+
+.squares li::before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid black;
+  opacity: 0;
+  z-index: 100;
+}
+
+.squares li:hover::after {
+  content: attr(data-level);
+  opacity: 1;
+}
+
+.squares li:active::after {
+  content: attr(data-value) attr(data-date);
+  opacity: 1;
+}
+
+.squares li:hover::before {
+  opacity: 1;
 }

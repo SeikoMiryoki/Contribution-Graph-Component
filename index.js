@@ -32,22 +32,22 @@ const time = fetch('https://dpg.gg/test/calendar.json')
       date.setDate(date.getDate() + i);
       
       const square = document.createElement('li')
-      square.setAttribute('data-date', date.toISOString().split('T')[0]);
+      square.setAttribute('data-date', date);
       
       if (dataObject[date.toISOString().split('T')[0]] !== undefined) {
-        square.setAttribute('data-value', dataObject[date.toISOString().split('T')[0]]);
+        square.setAttribute('data-value', `${dataObject[date.toISOString().split('T')[0]]} contributions`);
         if (dataObject[date.toISOString().split('T')[0]] >= 30) {
-          square.setAttribute('data-level', 5)
+          square.setAttribute('data-level', '30+ contributions')
         } else if (dataObject[date.toISOString().split('T')[0]] >= 20) {
-          square.setAttribute('data-level', 4)
+          square.setAttribute('data-level', '20-29 contributions')
         } else if (dataObject[date.toISOString().split('T')[0]] >= 10) {
-          square.setAttribute('data-level', 3)
+          square.setAttribute('data-level', '10-19 contributions')
         } else {
-          square.setAttribute('data-level', 2)
+          square.setAttribute('data-level', '1-9 contributions')
         }
       } else {
-        square.setAttribute('data-value', 0);
-        square.setAttribute('data-level', 1)
+        square.setAttribute('data-value', 'No contributions');
+        square.setAttribute('data-level', 'No contributions')
       }
       
       squares.appendChild(square);
