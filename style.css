@@ -117,8 +117,8 @@ ul {
   padding: 5px;
   color: white;
   text-align: center;
+  white-space: pre;
   opacity: 0;
-  transition: 1s;
   z-index: 100;
 }
 
@@ -143,7 +143,7 @@ ul {
 }
 
 .squares li:active::after {
-  content: attr(data-value) attr(data-date);
+  content: attr(data-value) '\A' attr(data-date);
   opacity: 1;
 }
 

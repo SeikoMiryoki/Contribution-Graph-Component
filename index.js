@@ -32,7 +32,7 @@ const time = fetch('https://dpg.gg/test/calendar.json')
       date.setDate(date.getDate() + i);
       
       const square = document.createElement('li')
-      square.setAttribute('data-date', date);
+      square.setAttribute('data-date', date.toDateString());
       
       if (dataObject[date.toISOString().split('T')[0]] !== undefined) {
         square.setAttribute('data-value', `${dataObject[date.toISOString().split('T')[0]]} contributions`);
